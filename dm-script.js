@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Inicializar la aplicación del DM
 function initializeDMApp() {
     auth.onAuthStateChanged(user => {
-        if (user && user.email.endsWith('@dm.com')) { // Reemplaza con tu dominio
+       if (user && user.email === 'gonzalobrenes2009@gmail.com') { // Reemplaza con tu dominio
             dmUser = user;
             showDMMainContent();
             loadCampaignData();
