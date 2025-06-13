@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campaña D&D - Sistema de Puntos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">⚔️ Campaña D&D</h1>
+            <nav class="nav">
+                <a href="#home" class="nav-link">Inicio</a>
+                <a href="#points" class="nav-link">Mis Puntos</a>
+                <a href="#shop" class="nav-link">Tienda</a>
+                <a href="#rules" class="nav-link">Reglas</a>
+            </nav>
+            <div class="auth-buttons">
+                <button id="loginBtn" class="btn btn-primary">Iniciar Sesión</button>
+                <button id="logoutBtn" class="btn btn-secondary" style="display: none;">Cerrar Sesión</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Sección de Login -->
+        <section id="loginSection" class="login-section">
+            <div class="container">
+                <div class="login-card">
+                    <h2>🎲 Acceso a la Campaña</h2>
+                    <form id="loginForm">
+                        <input type="email" id="email" placeholder="Correo electrónico" required>
+                        <input type="password" id="password" placeholder="Contraseña" required>
+                        <button type="submit" class="btn btn-primary">Entrar</button>
+                    </form>
+                    <p>¿No tienes cuenta? <a href="#" id="showRegister">Regístrate aquí</a></p>
+
+                    <form id="registerForm" style="display: none;">
+                        <h3>Crear Cuenta</h3>
+                        <input type="text" id="playerName" placeholder="Nombre del jugador" required>
+                        <input type="email" id="regEmail" placeholder="Correo electrónico" required>
+                        <input type="password" id="regPassword" placeholder="Contraseña" required>
+                        <button type="submit" class="btn btn-primary">Registrarse</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Principal -->
+        <section id="mainContent" style="display: none;">
+            <!-- Dashboard de Puntos -->
+            <section id="points" class="points-section">
+                <div class="container">
+                    <div class="points-card">
+                        <h2>💰 Mis Puntos</h2>
+                        <div class="points-display">
+                            <span class="points-number" id="userPoints">0</span>
+                            <span class="points-label">Puntos</span>
+                        </div>
+                        <p>Jugador: <span id="playerNameDisplay"></span></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tienda -->
+            <section id="shop" class="shop-section">
+                <div class="container">
+                    <h2>🛒 Tienda de Recompensas</h2>
+                    <div class="shop-grid" id="shopItems">
+                        <!-- Los items se cargarán dinámicamente -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Reglas -->
+            <section id="rules" class="rules-section">
+                <div class="container">
+                    <h2>🏆 Sistema de Recompensas</h2>
+                    <div class="rules-grid">
+                        <div class="rules-card">
+                            <h3>Cómo Ganar Puntos</h3>
+                            <table class="points-table">
+                                <thead>
+                                    <tr>
+                                        <th>Actividad</th>
+                                        <th>Puntos</th>
+                                        <th>Notas</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Completar misión principal</td><td>10-20 pts</td><td>Según dificultad</td></tr>
+                                    <tr><td>Completar misión secundaria</td><td>5-10 pts</td><td>Misiones opcionales</td></tr>
+                                    <tr><td>Roleplay destacado</td><td>3 pts</td><td>Interpretación creativa</td></tr>
+                                    <tr><td>Resolver conflicto sin combate</td><td>5 pts</td><td>Diplomacia, engaño</td></tr>
+                                    <tr><td>Derrotar enemigo común</td><td>1 pt</td><td>Contribución activa</td></tr>
+                                    <tr><td>Derrotar mini-jefe</td><td>5 pts</td><td>Enemigos únicos</td></tr>
+                                    <tr><td>Derrotar jefe principal</td><td>10 pts</td><td>Se reparte entre grupo</td></tr>
+                                    <tr><td>Salvaguardar PNJ importante</td><td>3 pts</td><td>Con consecuencias</td></tr>
+                                    <tr><td>Descubrir secreto importante</td><td>2-5 pts</td><td>Lore, pistas ocultas</td></tr>
+                                    <tr><td>Soluciones brillantes</td><td>2 pts</td><td>Uso ingenioso</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <!-- Modal para compras -->
+    <div id="purchaseModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Confirmar Compra</h3>
+            <p id="purchaseText"></p>
+            <div class="modal-buttons">
+                <button id="confirmPurchase" class="btn btn-primary">Confirmar</button>
+                <button id="cancelPurchase" class="btn btn-secondary">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore-compat.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

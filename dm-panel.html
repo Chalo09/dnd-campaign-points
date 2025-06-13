@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel del DM - Sistema de Puntos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        .dm-panel {
+            background: linear-gradient(135deg, #8B0000, #DC143C);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+        .player-card {
+            background: white;
+            color: var(--text-color);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        .points-input {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            margin-top: 1rem;
+        }
+        .points-input input, .points-input select {
+            padding: 0.5rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+        }
+        .notification-item {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 8px;
+        }
+        .notification-item.read {
+            background: #f8f9fa;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">🎲 Panel del Dungeon Master</h1>
+            <div class="auth-buttons">
+                <button id="dmLogoutBtn" class="btn btn-secondary">Cerrar Sesión</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Sección de Login del DM -->
+        <section id="dmLoginSection" class="login-section">
+            <div class="container">
+                <div class="login-card">
+                    <h2>🔐 Acceso del DM</h2>
+                    <form id="dmLoginForm">
+                        <input type="email" id="dmEmail" placeholder="Correo del DM" required>
+                        <input type="password" id="dmPassword" placeholder="Contraseña del DM" required>
+                        <button type="submit" class="btn btn-primary">Acceder</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Panel Principal del DM -->
+        <section id="dmMainContent" style="display: none;">
+            <div class="container">
+                <!-- Resumen -->
+                <div class="dm-panel">
+                    <h2>📊 Resumen de la Campaña</h2>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                        <div style="text-align: center;">
+                            <h3 id="totalPlayers">0</h3>
+                            <p>Jugadores Registrados</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <h3 id="totalPointsDistributed">0</h3>
+                            <p>Puntos Distribuidos</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <h3 id="totalPurchases">0</h3>
+                            <p>Compras Realizadas</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gestión de Jugadores -->
+                <section class="rules-section">
+                    <h2>👥 Gestión de Jugadores</h2>
+                    <div id="playersContainer">
+                        <!-- Los jugadores se cargarán aquí -->
+                    </div>
+                </section>
+
+                <!-- Notificaciones de Compras -->
+                <section class="shop-section">
+                    <h2>🛒 Notificaciones de Compras</h2>
+                    <div id="notificationsContainer">
+                        <!-- Las notificaciones se cargarán aquí -->
+                    </div>
+                </section>
+
+                <!-- Acciones Rápidas -->
+                <section class="rules-section">
+                    <h2>⚡ Acciones Rápidas</h2>
+                    <div class="rules-card">
+                        <h3>Otorgar Puntos a Todos</h3>
+                        <div class="points-input">
+                            <input type="number" id="bulkPoints" placeholder="Cantidad de puntos" min="1">
+                            <select id="bulkReason">
+                                <option value="Completar misión principal">Completar misión principal</option>
+                                <option value="Completar misión secundaria">Completar misión secundaria</option>
+                                <option value="Roleplay destacado">Roleplay destacado</option>
+                                <option value="Resolver conflicto sin combate">Resolver conflicto sin combate</option>
+                                <option value="Derrotar jefe principal">Derrotar jefe principal</option>
+                                <option value="Otro">Otro motivo</option>
+                            </select>
+                            <button class="btn btn-primary" onclick="givePointsToAll()">Otorgar a Todos</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore-compat.js"></script>
+    <script src="dm-script.js"></script>
+</body>
+</html>
