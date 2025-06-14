@@ -304,10 +304,10 @@ async function handlePurchaseConfirm() {
         // Actualizar puntos en Firestore
         const newPoints = userPoints - selectedItem.price;
        const purchaseData = {
-    itemId: selectedItem.id,
-    itemName: selectedItem.name,
-    price: selectedItem.price,
-    timestamp: new Date() // ✅ USAR Date() EN LUGAR DE serverTimestamp()
+           itemId: selectedItem.id,
+           itemName: selectedItem.name,
+           price: selectedItem.price,
+           timestamp: new Date() // ✅ BUENO
 };
 
         await db.collection('players').doc(currentUser.uid).update({
@@ -340,7 +340,7 @@ async function notifyDM(purchaseData) {
             playerId: currentUser.uid,
             playerName: playerNameDisplay.textContent,
             purchase: purchaseData,
-            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+            timestamp: new Date(), // ✅ CORREGIDO
             read: false
         });
     } catch (error) {
