@@ -303,12 +303,12 @@ async function handlePurchaseConfirm() {
 
         // Actualizar puntos en Firestore
         const newPoints = userPoints - selectedItem.price;
-        const purchaseData = {
-            itemId: selectedItem.id,
-            itemName: selectedItem.name,
-            price: selectedItem.price,
-            timestamp: firebase.firestore.FieldValue.serverTimestamp()
-        };
+       const purchaseData = {
+    itemId: selectedItem.id,
+    itemName: selectedItem.name,
+    price: selectedItem.price,
+    timestamp: new Date() // ✅ USAR Date() EN LUGAR DE serverTimestamp()
+};
 
         await db.collection('players').doc(currentUser.uid).update({
             points: newPoints,
