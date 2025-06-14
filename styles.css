@@ -6,15 +6,15 @@
 }
 
 :root {
-    --primary-color: #8B4513;
-    --secondary-color: #DAA520;
-    --accent-color: #CD853F;
-    --dark-color: #2C1810;
-    --light-color: #F5F5DC;
-    --text-color: #333;
-    --border-color: #D4AF37;
+    --primary-color: #3498db; /* Azul Huevo de Dragón */
+    --secondary-color: #2980b9; /* Azul Profundo */
+    --accent-color: #85c1e9;   /* Azul Glacial */
+    --dark-color: #2c3e50;      /* Un azul muy oscuro para texto importante */
+    --light-color: #ecf0f1;     /* Grisáceo */
+    --text-color: #34495e;      /* Grisáceo oscuro para texto */
+    --border-color: #3498db;    /* Azul Huevo de Dragón */
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    --gradient: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
 }
 
 body {
@@ -33,7 +33,7 @@ body {
 
 /* Header */
 .header {
-    background: var(--gradient);
+    background: linear-gradient(135deg, #3498db, #2980b9);
     color: white;
     padding: 1rem 0;
     box-shadow: var(--shadow);
@@ -94,25 +94,25 @@ body {
 }
 
 .btn-primary {
-    background: var(--secondary-color);
-    color: var(--dark-color);
+    background: #f1c40f; /* Dorado */
+    color: #2c3e50;      /* Azul muy oscuro */
 }
 
 .btn-primary:hover {
-    background: #FFD700;
+    background: #f39c12; /* Dorado más oscuro */
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(218, 165, 32, 0.3);
+    box-shadow: 0 6px 12px rgba(241, 196, 15, 0.3);
 }
 
 .btn-secondary {
     background: transparent;
-    color: white;
-    border: 2px solid white;
+    color: #3498db; /* Azul Huevo de Dragón */
+    border: 2px solid #3498db;
 }
 
 .btn-secondary:hover {
-    background: white;
-    color: var(--primary-color);
+    background: #3498db; /* Azul Huevo de Dragón */
+    color: white;
 }
 
 /* Sección de Login */
@@ -303,13 +303,14 @@ body {
 }
 
 .points-table th {
-    background: var(--gradient);
+    background: #2980b9; /* Azul Profundo */
     color: white;
     font-weight: 600;
 }
 
 .points-table tr:hover {
-    background: rgba(218, 165, 32, 0.1);
+    background: rgba(52, 152, 219, 0.1); /* Azul Huevo de Dragón */
+}
 }
 
 /* Modal */
